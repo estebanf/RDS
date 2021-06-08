@@ -5,10 +5,10 @@ async function routes(fastify, options) {
       title: "All employees list",
       desc: "List of all employees",
       items: [
-        {employeeId: "1", name: "Esteban"},
-        {employeeId: "2", name: "Jose"},
-        {employeeId: "3", name: "Felipe"},
-        {employeeId: "4", name: "Mujica"},
+        {EmployeeId: "1", Name: "Esteban"},
+        {EmployeeId: "2", Name: "Jose"},
+        {EmployeeId: "3", Name: "Felipe"},
+        {EmployeeId: "4", Name: "Mujica"},
       ]
     }
   })
