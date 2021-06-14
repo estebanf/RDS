@@ -2,10 +2,18 @@ const fastify = require('fastify')({
   logger: true
 })
 
-fastify.register(require('./list'))
 
 const start = async () => {
   try {
+    fastify.register(require('fastify-mongodb'), {
+      forceClose: true,
+      url: 'mongodb://localhost:27017/mydb'
+    })
+    fastify.register(require('./list'));
+    fastify.register(require('./save'));
+    fastify.register(require('./lookup'));
+    fastify.register(require('./view'));
+
     await fastify.listen(3000)
   } catch (err) {
     fastify.log.error(err);
@@ -13,4 +21,4 @@ const start = async () => {
   }
 }
 
-start();
+start()

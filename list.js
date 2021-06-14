@@ -1,15 +1,21 @@
 async function routes(fastify, options) {
-  fastify.post('/employees/list', async (req,reply) => {
+  fastify.post('/:object/list', async (req,reply) => {
+    const object = req.params.object;
+    const db = fastify.mongo.db;
+    const docs = await db.collection(object).find().toArray();
+
+    reply.code(200);
     return {
-      listname: "All employees",
-      title: "All employees list",
-      desc: "List of all employees",
-      items: [
-        {EmployeeId: "1", Name: "Esteban"},
-        {EmployeeId: "2", Name: "Jose"},
-        {EmployeeId: "3", Name: "Felipe"},
-        {EmployeeId: "4", Name: "Mujica"},
-      ]
+      listname: req.body.listname,
+      title: "List of " + object,
+      desc: "List of " + object,
+      items: docs
+      // items: [
+      //   {EmployeeId: "1", Name: "Esteban"},
+      //   {EmployeeId: "2", Name: "Jose"},
+      //   {EmployeeId: "3", Name: "Felipe"},
+      //   {EmployeeId: "4", Name: "Mujica"},
+      // ]
     }
   })
 }
