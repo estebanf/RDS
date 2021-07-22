@@ -13,6 +13,7 @@ const start = async () => {
     fastify.register(require('./save'));
     fastify.register(require('./lookup'));
     fastify.register(require('./view'));
+    fastify.register(require('./save_action'));
 
     await fastify.listen(3000)
   } catch (err) {

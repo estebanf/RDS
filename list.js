@@ -10,12 +10,6 @@ async function routes(fastify, options) {
       title: "List of " + object,
       desc: "List of " + object,
       items: docs
-      // items: [
-      //   {EmployeeId: "1", Name: "Esteban"},
-      //   {EmployeeId: "2", Name: "Jose"},
-      //   {EmployeeId: "3", Name: "Felipe"},
-      //   {EmployeeId: "4", Name: "Mujica"},
-      // ]
     }
   })
 }
