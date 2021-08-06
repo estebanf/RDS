@@ -27,7 +27,7 @@ async function routes(fastify, options) {
       outDTName:'BookSearchResult',
       refDS:{
         BookSearchCond:[
-          { BookName:'',Author:'LG CNS', Keyword: ''}
+          { BookName:'',Author:'', Keyword: ''}
         ]
       }});
     console.log(response.data.result.BookSearchResult);

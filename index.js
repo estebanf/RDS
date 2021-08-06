@@ -14,6 +14,7 @@ const start = async () => {
     fastify.register(require('./lookup'));
     fastify.register(require('./view'));
     fastify.register(require('./save_action'));
+    fastify.register(require('./lg'));
 
     await fastify.listen(3000)
   } catch (err) {
