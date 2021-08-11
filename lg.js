@@ -27,5 +27,10 @@ async function routes(fastify, options) {
     reply.code(200);
     return {}
   });
+  fastify.post('/lg/books/view', async (req,reply) => {
+    console.log(req.body);
+    reply.code(200);
+    return {}
+  });
 }
 module.exports = routes
