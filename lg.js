@@ -4,23 +4,6 @@ async function routes(fastify, options) {
   fastify.post('/lg/books/list', async (req,reply) => {
     const object = req.params.object;
 
-    let reqOptions = {
-      method: 'POST',
-      url: 'http://3.37.251.241:8080/bizarest',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      data: {
-        actID: 'BRS_SearchBook',
-        inDTName: 'BookSearchCond',
-        outDTName:'BookSearchResult',
-        refDS:{
-          BookSearchCond:[
-            { BookName:'',Author:'LG CNS', Keyword: ''}
-          ]
-        }
-      }
-    }
     let response = await axios.post('http://3.37.251.241:8080/bizarest',{
       actID: 'BRS_SearchBook',
       inDTName: 'BookSearchCond',
@@ -30,7 +13,6 @@ async function routes(fastify, options) {
           { BookName:'',Author:'', Keyword: ''}
         ]
       }});
-    console.log(response.data.result.BookSearchResult);
     reply.code(200);
     return {
       listname: req.body.listname,
@@ -39,6 +21,11 @@ async function routes(fastify, options) {
       items: response.data.result.BookSearchResult
     }
 
-  })
+  });
+  fastify.post('/lg/books/save', async (req,reply) => {
+    console.log(req.body);
+    reply.code(200);
+    return {}
+  });
 }
 module.exports = routes
